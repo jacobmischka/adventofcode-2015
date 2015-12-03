@@ -34,45 +34,34 @@ for(var i = 0; i < input.length; i++){
 var grid = [[]];
 grid[0][0] = 1;
 var input = document.getElementsByTagName("pre")[0].textContent;
-var santaX = 0, santaY = 0, robosantaX = 0, robosantaY = 0, houses = 1, gifts = 1;
+var human = {x: 0, y: 0}, robot = {x: 0, y: 0}, houses = 1, gifts = 1;
+var santa;
 for(var i = 0; i < input.length; i++){
 	direction = input.charAt(i);
-	if(i%2){
-		x = santaX;
-		y = santaY;
-	}
-	else{
-		x = robosantaX;
-		y = robosantaY;
-	}
+	if(i%2)
+		santa = human;
+	else
+		santa = robot;
 	switch(direction){
 		case "^":
-			y++;
+			santa.y++;
 			break;
 		case "v":
-			y--;
+			santa.y--;
 			break;
 		case ">":
-			x++;
+			santa.x++;
 			break;
 		case "<":
-			x--;
+			santa.x--;
 			break;
 	}
-	if(typeof(grid[x]) == "undefined")
-		grid[x] = [];
-	if(typeof(grid[x][y]) == "undefined"){
+	if(typeof(grid[santa.x]) == "undefined")
+		grid[santa.x] = [];
+	if(typeof(grid[santa.x][santa.y]) == "undefined"){
 		houses++;
-		grid[x][y] = 0;
+		grid[santa.x][santa.y] = 0;
 	}
-	grid[x][y]++;
+	grid[santa.x][santa.y]++;
 	gifts++;
-	if(i%2){
-		santaX = x;
-		santaY = y;
-	}
-	else{
-		robosantaX = x;
-		robosantaY = y;
-	}
 }
