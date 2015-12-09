@@ -2,7 +2,7 @@
 // http://adventofcode.com/day/7
 
 function part1(){
-	var input = document.getElementsByTagName("pre")[0].innerText.split("\n");
+	var input = document.getElementsByTagName("pre")[0].textContent.split("\n");
 	var output = 0, input1 = 2, operation = 3, input2 = 4;
 	var wires = {};
 	wires.set = function(key, value){
@@ -58,7 +58,7 @@ function part1(){
 }
 
 function part2(){
-	var input = document.getElementsByTagName("pre")[0].innerText.split("\n");
+	var input = document.getElementsByTagName("pre")[0].textContent.split("\n");
 	var output = 0, input1 = 2, operation = 3, input2 = 4;
 	var wires = {b: 16076};
 	wires.set = function(key, value){
