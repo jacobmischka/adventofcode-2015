@@ -21,5 +21,4 @@ function part2(){
 		}
 	}
 	return diff;
-
 }
