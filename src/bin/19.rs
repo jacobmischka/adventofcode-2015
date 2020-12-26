@@ -31,6 +31,26 @@ fn main() {
     }
 
     println!("Part 1: {}", distinct_molecules.len());
+
+    let mut molecule = medicine_molecule.clone();
+    let mut steps = 0;
+    while molecule != "e" {
+        steps += 1;
+        let (longest_from, longest_to) = replacements
+            .iter()
+            .filter(|(_from, to)| molecule.contains(to))
+            .fold(("", ""), |(longest_from, longest_to), (from, to)| {
+                if to.len() > longest_to.len() {
+                    (from, to)
+                } else {
+                    (longest_from, longest_to)
+                }
+            });
+
+        molecule = molecule.replacen(longest_to, longest_from, 1);
+    }
+
+    println!("Part 2: {}", steps);
 }
 
 fn replace_at(s: &str, from: &str, to: &str, index: usize) -> String {
